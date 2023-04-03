@@ -5,7 +5,7 @@ import requests
 import json
 
 def last_fm(payload):
-    API_KEY = "f1398a444fa5bd0e7af7c595efa3307c"
+    API_KEY = ""
     headers = {'user-agent': 'chronic'}
     url = 'https://ws.audioscrobbler.com/2.0/'
 
