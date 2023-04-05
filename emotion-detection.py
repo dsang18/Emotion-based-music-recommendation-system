@@ -39,23 +39,13 @@ names = ['Anger', 'Happy', 'Neutral', 'Sad', 'None']
 
 
 id = "unknown"
-# cam = cv2.VideoCapture(0)
-# # Initialize and start realtime video capture
-# cam.set(3, 640) # set video widht
-# cam.set(4, 480) # set video height
 
-# # Define min window size to be recognized as a face
-# minW = 0.1*cam.get(3)
-# minH = 0.1*cam.get(4)
 emotion_image = []
 emotion_detected = ""
 
 confidence = 0
 
-# while confidence<30:
-    # ret, img =cam.read()
-    # print("XX")
-    # cv2.imshow('img', img)
+
 img = cv2.imread("live_03.jpg")
 
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
@@ -64,7 +54,6 @@ faces = faceCascade.detectMultiScale(
     gray,
     scaleFactor = 1.2,
     minNeighbors = 5,
-    # minSize = (int(minW), int(minH)),
     )
 
 for(x,y,w,h) in faces:
@@ -87,13 +76,10 @@ for(x,y,w,h) in faces:
     
     cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)
     cv2.putText(img, str(confidence), (x+5,y+h-5), font, 1, (255,255,0), 1)  
-        # else:
-        #     print("unidentified")
 
 
 cv2.imwrite("new.jpg",emotion_image) 
 print("\n [INFO] Done detecting and Image is saved")
-# cam.release()
 cv2.destroyAllWindows()
 
 name,url = last_fm( {'method': 'album.search','album':emotion_detected})
