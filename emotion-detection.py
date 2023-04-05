@@ -46,7 +46,8 @@ emotion_detected = ""
 confidence = 0
 
 
-img = cv2.imread("live_03.jpg")
+os.chdir("..")
+img = cv2.imread("images/live_04.jpg")
 
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
@@ -63,7 +64,7 @@ for(x,y,w,h) in faces:
     id, confidence = recognizer.predict(gray[y:y+h,x:x+w])
     print(confidence)
     # Check if confidence is less then 100 ==> "0" is perfect match 
-    if (confidence > 30 and confidence < 100):
+    if confidence < 100:
         id = names[id]
         confidence = "  {0}".format(round(100 - confidence))
         emotion_image = img
