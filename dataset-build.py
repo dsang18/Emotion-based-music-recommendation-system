@@ -37,6 +37,7 @@ def rename_images(emotion, id):
                 cv2.imwrite("dataset/User."+str(face_id)+"."+str(count)+".jpg", gray[y:y+h,x:x+w])
 
 
+
 os.system('cmd /c "git clone https://github.com/misbah4064/facial_expressions.git"')
 
 os.chdir("facial_expressions")

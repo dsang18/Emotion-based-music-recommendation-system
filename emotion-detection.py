@@ -35,7 +35,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 id = 0
 
 # Emotions related to ids: example ==> Anger: id=0,  etc
-names = ['Anger', 'Happy', 'Neutral', 'Sad', 'None'] 
+names = ['Anger', 'Happy', 'Neutral', 'Sad'] 
 
 
 id = "unknown"
@@ -47,7 +47,7 @@ confidence = 0
 
 
 os.chdir("..")
-img = cv2.imread("images/live_04.jpg")
+img = cv2.imread("images/live_02.jpg")
 
 gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
@@ -66,17 +66,15 @@ for(x,y,w,h) in faces:
     # Check if confidence is less then 100 ==> "0" is perfect match 
     if confidence < 100:
         id = names[id]
-        confidence = "  {0}".format(round(100 - confidence))
+        confidence = "  {0}%".format(round(100 - confidence))
         emotion_image = img
-        print(str(id))
         emotion_detected = str(id)
         
     else:
         id = "unknown"
         confidence = "  {0}%".format(round(100 - confidence))
     
-    cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)
-    cv2.putText(img, str(confidence), (x+5,y+h-5), font, 1, (255,255,0), 1)  
+    cv2.putText(img, str(id), (x+5,y-5), font, 1, (255,255,255), 2)  
 
 
 cv2.imwrite("new.jpg",emotion_image) 
