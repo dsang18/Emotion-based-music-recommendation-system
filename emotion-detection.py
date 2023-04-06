@@ -69,6 +69,7 @@ for(x,y,w,h) in faces:
         confidence = "  {0}%".format(round(100 - confidence))
         emotion_image = img
         emotion_detected = str(id)
+        print(f'Emotion Detected: {emotion_detected}')
         
     else:
         id = "unknown"
